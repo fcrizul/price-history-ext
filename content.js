@@ -24,7 +24,7 @@ if (result != null){
                         xAxes: [{
                             type: 'time',
                             time: {
-                                parser: 'YYYY-MM-DD HH:mm:ss.SSS',
+                                parser: 'YYYY-MM-DD HH:mm:ss.SZ',
                                 tooltipFormat: 'DD / MM / YYYY',
                                 displayFormats: {
                                     year: 'DD/MM/YYYY',

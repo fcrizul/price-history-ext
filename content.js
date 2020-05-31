@@ -3,6 +3,7 @@ var result = path.match('(^/[A-Z]+-[0-9]+)-');
 if (result != null){
     //console.log("result: " +result[1])
     fetch('https://api.thelabs.dev/price-history/ml/item' + result[1]).then(r => r.text()).then(result => {
+    //fetch('http://localhost:8080/ml/item' + result[1]).then(r => r.text()).then(result => {
         var response = JSON.parse(result);
         if (response.code == 200){
             
@@ -24,7 +25,7 @@ if (result != null){
                         xAxes: [{
                             type: 'time',
                             time: {
-                                parser: 'YYYY-MM-DD HH:mm:ss.SZ',
+                                parser: 'YYYY-MM-DD HH:mm:ss.S Z',
                                 tooltipFormat: 'DD / MM / YYYY',
                                 displayFormats: {
                                     year: 'DD/MM/YYYY',

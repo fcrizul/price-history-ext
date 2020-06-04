@@ -5,10 +5,12 @@
   "description": "",
   "icons": {"128": "icon128.png"},
   "homepage_url": "https://github.com/thelabs-dev/",
-  
   "content_scripts": [{
     "css": ["styles.css"],
     "js": ["moment.js","Chart.min.js","chartjs-adapter-momen.js","jquery.min.js","content.js"],
     "matches": ["https://*.mercadolibre.com.uy/*"]
-  }]
+  }],
+  "permissions": [
+    "storage"
+  ]
 }

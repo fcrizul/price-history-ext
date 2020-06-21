@@ -76,7 +76,12 @@ function getData(key) {
 }
 
 function showChart(data) {
-    $('.vip-gallery-container').append('<div class="ml-container-price-history"><h2 class="ml-title-price-history">Histórico de precios</h2><div style="position: relative; height:200px"><canvas id="ml-price-history-gra"></canvas></div></div>');
+    var container = $('.vip-gallery-container');
+    if (!container.length){
+        container = $('.layout-short-description');
+    }
+
+    container.append('<div class="ml-container-price-history"><h2 class="ml-title-price-history">Histórico de precios</h2><div style="position: relative; height:200px"><canvas id="ml-price-history-gra"></canvas></div></div>');
     var config = {
         type: 'line',
         data: data,
@@ -99,9 +104,9 @@ function showChart(data) {
                             year: 'DD/MM/YYYY',
                             quarter: 'DD/MM/YYYY',
                             month :'MMM D',
-                            week:'D',
-                            day:'ddd',
-                            hour:'ddd',
+                            week:'MMM D',
+                            day:'MMM D',
+                            hour:'ddd D',
                             minute:'ddd',
                             second:'HH:mm',
                             millisecond:'HH:mm',

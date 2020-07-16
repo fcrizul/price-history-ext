@@ -58,6 +58,40 @@ if (result != null){
             }
         }
       });
+}else{
+    if (window.location.host.match('[a-z]\.mercadolibre.com.uy') != null){
+        var urls = $(".ui-search-layout__item .ui-search-item__group .ui-search-link");
+        if (urls.length <= 0){
+            urls = $(".ui-search-layout__item .ui-search-result__content.ui-search-link");
+        }
+        var items = [];
+        for ( var i = 0, l = urls.length; i < l; i++ ) {
+            var result = urls[i].pathname.match('(^/[A-Z]+-[0-9]+)-');
+            if (result != null){
+                items.push(result[1].substring(1));
+            }
+        }
+        
+        console.log(items);
+
+        fetch('https://api.thelabs.dev/price-history/ml/scan/items', {
+            method: 'POST',
+            body: JSON.stringify(items), // data can be `string` or {object}!
+            headers:{
+              //'Content-Type': 'application/json'
+            }
+          }).then(
+            function(response) {
+              if (response.status !== 200) {
+                console.log('Looks like there was a problem. Status Code: ' +response.status);
+                return;
+              }
+            }
+          )
+          .catch(function(err) {
+            console.log('Fetch Error :-S', err);
+          });
+    }
 }
 
 function getData(key) {
